@@ -1,0 +1,21 @@
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+.container {
+    flex: 1; 
+}
+
+
+footer {
+    margin-top: auto; 
+}
+
+svg.w-5.h-5 {
+    width: 1rem;
+    height: 1rem;
+}
