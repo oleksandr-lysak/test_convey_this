@@ -18,4 +18,5 @@ class DomainService
         $cleanDomain = $this->sanitizeDomain($rawDomain);
         return Auth::user()->domain()->updateOrCreate([], ['domain' => $cleanDomain]);
     }
+
 }

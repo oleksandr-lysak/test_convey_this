@@ -1,15 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
-
 use App\Models\User;
-use Illuminate\Http\Request;
+use App\Services\UserService;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(UserService $userService)
     {
-        $users = User::orderBy('created_at', 'desc')->paginate(20);
+        $users = $userService->getUsers();
         return view('users', compact('users'));
     }
 }

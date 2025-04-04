@@ -1,3 +1,12 @@
+I'm using SQLite for local testing.
+
+```shell
+- php artisan migrate
+- php artisan db:seed
+- php artisan serve
+```
+
+
 Create a Laravel application. Use Bootstrap frontend framework for the responsive layout on all pages.
 The main layout for all pages includes:
 

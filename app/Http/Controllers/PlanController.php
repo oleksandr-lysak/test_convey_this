@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ChangePlanRequest;
 use App\Models\Plan;
-use Illuminate\Http\Request;
+use App\Services\PlanService;
 
 class PlanController extends Controller
 {
@@ -14,11 +15,9 @@ class PlanController extends Controller
         return view('plans', compact('plans'));
     }
 
-    public function change(Request $request)
+    public function change(ChangePlanRequest $request, PlanService $planService)
     {
-        $request->validate(['plan_id' => 'required|exists:plans,id']);
-
-        auth()->user()->update(['plan_id' => $request->plan_id]);
+        $planService->changeUserPlan(auth()->user(), $request->plan_id);
 
         return redirect()->back()->with('success', 'Plan updated');
     }

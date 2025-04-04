@@ -10,7 +10,10 @@
     <div class="container">
         <!-- Header -->
         <header class="d-flex justify-content-between align-items-center my-3">
-            <a href="{{ route('dashboard') }}" class="h3">SampleName</a>
+            <a href="{{ route('dashboard') }}" class="h3">
+                <img src="{{ asset('images/logo.png') }}" alt="Logo" class="mr-2" style="height: 40px;">
+                SampleName
+            </a>
             <div class="d-flex justify-content-center w-50">
                 <a href="{{ route('dashboard') }}" class="mx-3">Dashboard</a>
                 <a href="{{ route('plans') }}" class="mx-3">Plans</a>
