@@ -14,8 +14,3 @@ body {
 footer {
     margin-top: auto; 
 }
-
-svg.w-5.h-5 {
-    width: 1rem;
-    height: 1rem;
-}
