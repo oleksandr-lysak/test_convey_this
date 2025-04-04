@@ -2,7 +2,7 @@ I'm using SQLite for local testing.
 
 ```shell
 - git clone https://github.com/oleksandr-lysak/test_convey_this.git
-- cd cd test_convey_this
+- cd test_convey_this
 - cp .env.example .env
 - composer install
 - touch database/database.sqlite
