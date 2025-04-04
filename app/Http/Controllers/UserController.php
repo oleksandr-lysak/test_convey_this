@@ -1,6 +1,7 @@
 <?php
+namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Http\Controllers\Controller;
 use App\Services\UserService;
 
 class UserController extends Controller
