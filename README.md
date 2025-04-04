@@ -1,4 +1,7 @@
-I'm using SQLite for local testing.
+1. I wrote the front-end using pure Bootstrap without using any JS or JS frameworks. If needed, I can rewrite it using Vue.js, Laravel Inertia, and TypeScript.  
+2. From the task description, it's not clear if one user can have multiple domains, but it mentions that there should be a domain column in the users table. So, I assumed that one user has one domain, which can only be added or edited, but not deleted.  
+3. For the convenience of local deployment, I used SQLite.  
+4. I wasn't sure if the header and footer should be displayed on the login and registration pages, so I decided to display them.
 
 ```shell
 - git clone https://github.com/oleksandr-lysak/test_convey_this.git
