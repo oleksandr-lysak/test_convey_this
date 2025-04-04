@@ -1,66 +1,62 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Create a Laravel application. Use Bootstrap frontend framework for the responsive layout on all pages.
+The main layout for all pages includes:
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+1) Header.
 
-## About Laravel
+ - Logo (any image) and “SampleName” text on the left. It is a link to “/dashboard” page;
+ - “Register” and “Login” buttons on the right, if user is not logged in. If user registered and logged in already, then on the right should be his name and “Sign out” button. It should work and make log out too.
+ - Menu on the center with 3 links: Dashboard, Plans, Users (“Users” visible only for admin users, read the following instruction).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+2) Footer with a copyright and a current year, it should be always actual, not hardcoded number. (“Copyright 2025 SampleName”). Footer must be always at the bottom, even if the page content is empty. If the page content is huge, footer must be under the content, not fixed.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+There should be 5 pages/routes:
+    1) /register. Name, email, password, confirm password, “Register” button.
+    2) /login. Email, password, “Sign in” button.
+    3) /dashboard. On this page user can :
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- add and edit domain name (without https://, www, without links after “/”, only domain. Trim, clear it and save only domain name itself, if user inserted the full link with sub page. It should be like “google.com”, not <https://www.google.com/about>... Save only “google.com” and remove other parts of url). The domain name must be unique. If this domain was already added by another user, show an alert message about it.
+If user is not logged in, /dashboard must redirect to /login page.
+    4) /users. Hidden page for admin users. If user has “is_admin” = 1 value in database for users, then he can see this page. If “is_admin” = 0, the route should redirect to /dashboard, and the link should be hidden from menu.
+ On this page should be a table with all registered users. There are 5 columns: id, name, email, domain, created_at, sorted by “created_at” DESC, the latest should be on the top.
+Pagination is not necessary, but will be a plus, 20 users per page. Insert to the database 25 random users with random data.
+    5) /plans. Create a page with 3 columns for plans. Each plan consists of its price, few features and a button “Buy” on the bottom. The button should be on the bottom always, with any amount of features (all plan cards must be the same height).
+If you click on the “Buy” button, your plan will be changed. Use data from “plans” table. (read the following instruction).
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Database instructions. You can create more columns, if you need, but these are neccessary:
+    1) “users” table must have columns: id(autoincrement), name, email, password (hashed by Laravel, not the password itself), is_admin (0/1 values, by default = 0), plan_id ( = id in “plans” table), created_at (date and time when user was registered).
+    2) “domains” table columns: id(autoincrement), user_id (= id in “users” table), domain, created_at, updated_at.
+    3) “plans” table columns: id (autoincrement), plan_name,  price, features (json with few features).
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Plans data:
+```json
+[
+    {
+        "plan_name": "Basic",
+        "price": 10,
+        "features": {
+            "Storage": "10GB",
+            "Users": "1 User"
+        }
+    },
+    {
+        "plan_name": "Standard",
+        "price": 25,
+        "features": {
+            "Storage": "50GB",
+            "Support": "Email & Chat Support",
+            "Users": "Up to 5 Users"
+        }
+    },
+    {
+        "plan_name": "Premium",
+        "price": 50,
+        "features": {
+            "Storage": "200GB",
+            "Support": "Priority Support",
+            "Daily reports",
+            "Users": "Unlimited Users"
+        }
+    }
+]
+```
